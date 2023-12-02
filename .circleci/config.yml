@@ -36,7 +36,7 @@ jobs:
           root: .
           paths:
             - LICENSE.txt
-            - src
+            - ./
             # - tools
       
   integration-tests:
