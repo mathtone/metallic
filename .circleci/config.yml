@@ -153,11 +153,11 @@ workflows:
           type: approval
           requires:
             - integration-tests
-      # - publish-nuget:
-      #     filters:
-      #       branches:
-      #          only:
-      #             - /release.*/
-      #     context: MATHTONE_DEV
-      #     requires:
-      #       - approve-ship
+      - publish-nuget:
+          filters:
+            branches:
+               only:
+                  - /release.*/
+          context: MATHTONE_DEV
+          requires:
+            - approve-ship
