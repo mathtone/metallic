@@ -60,40 +60,40 @@ jobs:
       - run: dotnet test src/metallic.sln --configuration Release
       #- sonarcloud/scan
 
-  disintegration-tests:
-    docker:
-      - image: mcr.microsoft.com/dotnet/sdk:6.0
-      - image: postgres
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-      - image: mcr.microsoft.com/mssql/server:2022-latest
-        environment:
-          MSSQL_SA_PASSWORD: test!1234
-          ACCEPT_EULA: Y
-    working_directory: /mnt/ramdisk
-    steps:
-      - attach_workspace:
-          at: .
-      - get-version
-      - run: |
-          mkdir temp
-          mkdir packages
-          ls -l
-      - run: dotnet build tools/build-util/build-util.csproj --output temp
-      - run: dotnet temp/build-util.dll src/mathtone-magic.sln
-      - run: cat temp/process-sln.sh
-      - run: |
-          echo SUFFIX - $PKG_SFX_TAG
-          dotnet restore src/mathtone-magic.sln
-          dotnet nuget remove source nuget.org
-          dotnet nuget add source /mnt/ramdisk/packages -n local
-          bash temp/process-sln.sh
-      - run: dotnet test src/mathtone-magic.sln --configuration Release -- xunit.parallelizeAssembly=true
-      - persist_to_workspace:
-          root: .
-          paths:
-            - packages
+  # disintegration-tests:
+  #   docker:
+  #     - image: mcr.microsoft.com/dotnet/sdk:6.0
+  #     - image: postgres
+  #       environment:
+  #         POSTGRES_USER: postgres
+  #         POSTGRES_PASSWORD: postgres
+  #     - image: mcr.microsoft.com/mssql/server:2022-latest
+  #       environment:
+  #         MSSQL_SA_PASSWORD: test!1234
+  #         ACCEPT_EULA: Y
+  #   working_directory: /mnt/ramdisk
+  #   steps:
+  #     - attach_workspace:
+  #         at: .
+  #     - get-version
+  #     - run: |
+  #         mkdir temp
+  #         mkdir packages
+  #         ls -l
+  #     - run: dotnet build tools/build-util/build-util.csproj --output temp
+  #     - run: dotnet temp/build-util.dll src/mathtone-magic.sln
+  #     - run: cat temp/process-sln.sh
+  #     - run: |
+  #         echo SUFFIX - $PKG_SFX_TAG
+  #         dotnet restore src/mathtone-magic.sln
+  #         dotnet nuget remove source nuget.org
+  #         dotnet nuget add source /mnt/ramdisk/packages -n local
+  #         bash temp/process-sln.sh
+  #     - run: dotnet test src/mathtone-magic.sln --configuration Release -- xunit.parallelizeAssembly=true
+  #     - persist_to_workspace:
+  #         root: .
+  #         paths:
+  #           - packages
   # publish-artifactory:
   #   docker:
   #     - image: mcr.microsoft.com/dotnet/sdk:6.0
@@ -115,6 +115,7 @@ jobs:
     steps:
       - attach_workspace:
           at: .
+      - run: dotnet pack ./src/metallic.sln --configuration Release --output ./packages
       - run:
          name: Publish to Nuget
          command: dotnet nuget push packages/*.nupkg --api-key ${NUGET_PUBLISH_KEY} --source https://api.nuget.org/v3/index.json
@@ -143,15 +144,15 @@ workflows:
       #     requires:
       #       - integration-tests
       #       - disintegration-tests
-      # - approve-ship:
-      #     filters:
-      #       branches:
-      #          only:
-      #             - /release.*/
-      #     context: MATHTONE_DEV
-      #     type: approval
-      #     requires:
-      #       - disintegration-tests
+      - approve-ship:
+          filters:
+            branches:
+               only:
+                  - /release.*/
+          context: MATHTONE_DEV
+          type: approval
+          requires:
+            - integration-tests
       # - publish-nuget:
       #     filters:
       #       branches:
