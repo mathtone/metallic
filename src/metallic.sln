@@ -8,7 +8,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{53B2EF7D-683A-4B98-B11D-F32A62CF55BB}"
 	ProjectSection(SolutionItems) = preProject
 		..\.circleci\config.yml = ..\.circleci\config.yml
+		..\Icon.png = ..\Icon.png
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metallic.Tests", "tests\Metallic.Tests\Metallic.Tests.csproj", "{EE224879-0FD3-40FA-A6F2-71B84312D7EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,8 +23,15 @@ Global
 		{C9439B9D-256D-46C0-B300-F1C940BF18C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9439B9D-256D-46C0-B300-F1C940BF18C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9439B9D-256D-46C0-B300-F1C940BF18C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE224879-0FD3-40FA-A6F2-71B84312D7EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE224879-0FD3-40FA-A6F2-71B84312D7EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE224879-0FD3-40FA-A6F2-71B84312D7EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE224879-0FD3-40FA-A6F2-71B84312D7EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {963B156C-CA2E-4045-8823-393D107C4020}
 	EndGlobalSection
 EndGlobal

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include="..\..\..\Icon.png" Link="Icon.png" />
+  </ItemGroup>
+
 </Project>
