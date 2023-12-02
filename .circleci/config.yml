@@ -1,0 +1,162 @@
+version: 2.1
+commands:
+  get-version:
+    steps:
+      - run:
+         name: Getting Package Version
+         command: |
+          branch=$CIRCLE_BRANCH
+          ver=${branch/"release/"/""}
+          suffix=${ver#*-}
+          build=${ver%-*}
+          vertag=""
+          if  [ $suffix == "" ] || [ $suffix == $build ]; then
+            echo NO SUFFIX
+            echo "export PKG_SFX_TAG=""" >> $BASH_ENV
+            vertag=NOPE
+          else
+            echo $"SUFFIX FOUND- {$suffix}"
+            vertag=$"--version-suffix $suffix"
+            echo $"VERSION TAG- $vertag"
+            echo "export PKG_SFX_TAG='$vertag'" >> $BASH_ENV
+          fi
+          
+          echo "export PKG_VER=$build" >> $BASH_ENV
+          echo "export PKG_SFX=$suffix" >> $BASH_ENV
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.3        
+jobs:
+  get-code:
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:6.0
+    working_directory: /mnt/ramdisk
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: .
+          paths:
+            - LICENSE.txt
+            - src
+            # - tools
+      
+  integration-tests:
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:6.0
+      - image: postgres
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+      - image: mcr.microsoft.com/mssql/server:2022-latest
+        environment:
+          MSSQL_SA_PASSWORD: test!1234
+          ACCEPT_EULA: Y
+    working_directory: /mnt/ramdisk
+    steps:
+      - attach_workspace:
+          at: .
+      - run: ls -l
+      - run: ls ./src -l
+      - run: ls ./src/tests -l
+      - run: dotnet test src/metallic.sln --configuration Release
+      #- sonarcloud/scan
+
+  disintegration-tests:
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:6.0
+      - image: postgres
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+      - image: mcr.microsoft.com/mssql/server:2022-latest
+        environment:
+          MSSQL_SA_PASSWORD: test!1234
+          ACCEPT_EULA: Y
+    working_directory: /mnt/ramdisk
+    steps:
+      - attach_workspace:
+          at: .
+      - get-version
+      - run: |
+          mkdir temp
+          mkdir packages
+          ls -l
+      - run: dotnet build tools/build-util/build-util.csproj --output temp
+      - run: dotnet temp/build-util.dll src/mathtone-magic.sln
+      - run: cat temp/process-sln.sh
+      - run: |
+          echo SUFFIX - $PKG_SFX_TAG
+          dotnet restore src/mathtone-magic.sln
+          dotnet nuget remove source nuget.org
+          dotnet nuget add source /mnt/ramdisk/packages -n local
+          bash temp/process-sln.sh
+      - run: dotnet test src/mathtone-magic.sln --configuration Release -- xunit.parallelizeAssembly=true
+      - persist_to_workspace:
+          root: .
+          paths:
+            - packages
+  # publish-artifactory:
+  #   docker:
+  #     - image: mcr.microsoft.com/dotnet/sdk:6.0
+  #   steps:
+  #     - attach_workspace:
+  #         at: .
+  #     - run:
+  #         name: "Add Artifactory"
+  #         command: dotnet nuget add source https://mathtone.jfrog.io/artifactory/api/nuget/v3/mathtone-dev --name Mathtone-Dev --username ${ARTIFACTORY_USER} --password ${ARTIFACTORY_PWD} --store-password-in-clear-text
+  #     - run:
+  #        name: Publish to Artifactory
+  #        command: |
+  #           ls -l packages
+  #           dotnet nuget push packages/*.nupkg --source Mathtone-Dev
+
+  publish-nuget:
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:6.0
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+         name: Publish to Nuget
+         command: dotnet nuget push packages/*.nupkg --api-key ${NUGET_PUBLISH_KEY} --source https://api.nuget.org/v3/index.json
+workflows:
+  build-release:
+    jobs:
+      - get-code
+      - integration-tests:
+          context: MATHTONE_DEV
+          requires:
+            - get-code
+      # - disintegration-tests:
+      #     filters:
+      #       branches:
+      #          only:
+      #             - /release.*/
+      #     context: MATHTONE_DEV
+      #     requires:
+      #       - get-code 
+      # - publish-artifactory:
+      #     filters:
+      #       branches:
+      #          only:
+      #             - /release.*/
+      #     context: MATHTONE_DEV
+      #     requires:
+      #       - integration-tests
+      #       - disintegration-tests
+      # - approve-ship:
+      #     filters:
+      #       branches:
+      #          only:
+      #             - /release.*/
+      #     context: MATHTONE_DEV
+      #     type: approval
+      #     requires:
+      #       - disintegration-tests
+      # - publish-nuget:
+      #     filters:
+      #       branches:
+      #          only:
+      #             - /release.*/
+      #     context: MATHTONE_DEV
+      #     requires:
+      #       - approve-ship
