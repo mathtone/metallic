@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metallic", "sdk\Metallic\Me
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Solution Items", "0. Solution Items", "{53B2EF7D-683A-4B98-B11D-F32A62CF55BB}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.runsettings = .runsettings
 		..\.circleci\config.yml = ..\.circleci\config.yml
 		Directory.Build.props = Directory.Build.props
 		..\Icon.png = ..\Icon.png
@@ -16,15 +18,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "A. Sdk", "A. Sdk", "{D27667
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "X. Tests", "X. Tests", "{1C2004A4-72AC-4919-A269-62B0C2E8FEC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metallic.Data", "sdk\Metallic.Data\Metallic.Data.csproj", "{E86E9403-697A-4715-A18E-42F2B058F0EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metallic.Data", "sdk\Metallic.Data\Metallic.Data.csproj", "{E86E9403-697A-4715-A18E-42F2B058F0EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metallic.Data.Sql", "sdk\Metallic.Data.Sql\Metallic.Data.Sql.csproj", "{F3F09F90-B83E-4A4D-8973-1C3904BA478D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metallic.Data.Sql", "sdk\Metallic.Data.Sql\Metallic.Data.Sql.csproj", "{F3F09F90-B83E-4A4D-8973-1C3904BA478D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metallic.Data.Npgsql", "sdk\Metallic.Data.Npgsql\Metallic.Data.Npgsql.csproj", "{85CCA0A9-EEDD-4525-A0B7-B41B381315C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metallic.Data.Npgsql", "sdk\Metallic.Data.Npgsql\Metallic.Data.Npgsql.csproj", "{85CCA0A9-EEDD-4525-A0B7-B41B381315C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Metallic", "tests\Tests.Metallic\Tests.Metallic.csproj", "{30C2C438-7703-4FC1-8552-37B8A9161B54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Metallic", "tests\Tests.Metallic\Tests.Metallic.csproj", "{30C2C438-7703-4FC1-8552-37B8A9161B54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Metallic.Data", "tests\Tests.Metallic.Data\Tests.Metallic.Data.csproj", "{F6B5E43D-FDC9-4FDF-9598-27BA78350136}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Metallic.Data", "tests\Tests.Metallic.Data\Tests.Metallic.Data.csproj", "{F6B5E43D-FDC9-4FDF-9598-27BA78350136}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Metallic.Data.Npgsql", "tests\Tests.Metallic.Data.Npgsql\Tests.Metallic.Data.Npgsql.csproj", "{F2E98AED-1985-40CA-8E3D-9200F00F2DF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Metallic.Data.Sql", "tests\Tests.Metallic.Data.Sql\Tests.Metallic.Data.Sql.csproj", "{C9B55DDE-094C-48BC-B661-4A00E8A2A016}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +62,14 @@ Global
 		{F6B5E43D-FDC9-4FDF-9598-27BA78350136}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6B5E43D-FDC9-4FDF-9598-27BA78350136}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6B5E43D-FDC9-4FDF-9598-27BA78350136}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2E98AED-1985-40CA-8E3D-9200F00F2DF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2E98AED-1985-40CA-8E3D-9200F00F2DF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2E98AED-1985-40CA-8E3D-9200F00F2DF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2E98AED-1985-40CA-8E3D-9200F00F2DF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9B55DDE-094C-48BC-B661-4A00E8A2A016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9B55DDE-094C-48BC-B661-4A00E8A2A016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9B55DDE-094C-48BC-B661-4A00E8A2A016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9B55DDE-094C-48BC-B661-4A00E8A2A016}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +81,8 @@ Global
 		{85CCA0A9-EEDD-4525-A0B7-B41B381315C3} = {D27667BD-F9D8-464A-913D-F0BDE1DB9E99}
 		{30C2C438-7703-4FC1-8552-37B8A9161B54} = {1C2004A4-72AC-4919-A269-62B0C2E8FEC8}
 		{F6B5E43D-FDC9-4FDF-9598-27BA78350136} = {1C2004A4-72AC-4919-A269-62B0C2E8FEC8}
+		{F2E98AED-1985-40CA-8E3D-9200F00F2DF7} = {1C2004A4-72AC-4919-A269-62B0C2E8FEC8}
+		{C9B55DDE-094C-48BC-B661-4A00E8A2A016} = {1C2004A4-72AC-4919-A269-62B0C2E8FEC8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {963B156C-CA2E-4045-8823-393D107C4020}

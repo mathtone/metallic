@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\sdk\Metallic.Data\Metallic.Data.csproj" />
+    <ProjectReference Include="..\..\sdk\Metallic.Data.Npgsql\Metallic.Data.Npgsql.csproj" />
   </ItemGroup>
 
 </Project>
