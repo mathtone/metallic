@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="..\..\..\Icon.png" Link="Icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Metallic\Metallic.csproj" />
   </ItemGroup>
 
