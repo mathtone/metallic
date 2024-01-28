@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace Metallic.Data {
 
@@ -19,4 +20,6 @@ namespace Metallic.Data {
 				yield return selector(reader);
 		}
 	}
+
+
 }

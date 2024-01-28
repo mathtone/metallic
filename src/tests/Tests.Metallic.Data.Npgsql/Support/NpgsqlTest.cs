@@ -2,12 +2,14 @@
 using Metallic.Data;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
+//using Tests.Metallic.Support;
+using Tests.Support;
 using Xunit.Abstractions;
 
 namespace Tests.Metallic.Data.Npgsql.Support {
 	public class NpgsqlTest(ITestOutputHelper output) : ServiceComponentTest(output) {
-		protected override IServiceCollection ConfigureServices(IServiceCollection services) => base
-			.ConfigureServices(services)
-			.AddSingleton<IAsyncDbConnector<NpgsqlConnection>, TestDbConnector>();
+		//protected override IServiceCollection ConfigureServices(IServiceCollection services) => base
+		//	.ConfigureServices(services)
+		//	.AddSingleton<IAsyncDbConnector<NpgsqlConnection>, TestDbConnector>();
 	}
 }
