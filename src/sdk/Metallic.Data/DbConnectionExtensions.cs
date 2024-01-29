@@ -1,29 +1,53 @@
-﻿using System.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Common;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Metallic.Data {
+
 	public static class DbConnectionExtensions {
+		public static DbCommand TextCommand(this DbConnection connection, string commandText) =>
+			connection.TextCommand<DbConnection, DbCommand>(commandText);
 
-		public static CMD TextCommand<CN, CMD>(this CN connection, string commandText)
-			where CN : IDbConnection where CMD : IDbCommand =>
-			connection.CreateCommand<CN, CMD>(CommandType.Text, commandText);
+		public static DbCommand ProcCommand(this DbConnection connection, string commandText) =>
+			connection.ProcCommand<DbConnection, DbCommand>(commandText);
 
-		public static CMD ProcCommand<CN, CMD>(this CN connection, string commandText)
-			where CN : IDbConnection where CMD : IDbCommand =>
-			connection.CreateCommand<CN, CMD>(CommandType.StoredProcedure, commandText);
+		public static DbCommand TableCommand(this DbConnection connection, string commandText) =>
+			connection.TableCommand<DbConnection, DbCommand>(commandText);
 
-		public static CMD TableCommand<CN, CMD>(this CN connection, string commandText)
-			where CN : IDbConnection where CMD : IDbCommand =>
-			connection.CreateCommand<CN, CMD>(CommandType.TableDirect, commandText);
+		public static async IAsyncEnumerable<T> ExecuteReadAsync<T>(this DbConnection connection, Func<DbConnection, DbCommand> commandSelector, Func<DbDataReader, T> selector) {
+			await foreach (var r in connection.ExecuteReadAsync<DbConnection, DbCommand, DbDataReader, T>(commandSelector, selector)) {
+				yield return r;
+			}
+		}
 
-		public static CMD CreateCommand<CN, CMD>(this CN connection, CommandType type, string commandText)
-			where CN : IDbConnection where CMD : IDbCommand {
+		public static async IAsyncEnumerable<T> ExecuteReadAsync<CN, CMD, RDR, T>(this CN connection, Func<CN, CMD> commandSelector, Func<RDR, T> selector)
+			where CN : DbConnection
+			where CMD : DbCommand
+			where RDR : DbDataReader {
 
-			var command = connection.CreateCommand();
-			command.CommandType = type;
-			command.CommandText = commandText;
-			return (CMD)command;
+			await using (connection) {
+				await using var cmd = commandSelector(connection);
+				await cmd.Connection!.OpenAsync();
+				await foreach (var i in (await cmd.ExecuteReaderAsync()).ConsumeAsync(r => selector((RDR)r))) {
+					yield return i;
+				}
+				await cmd.Connection!.CloseAsync();
+			}
+		}
+
+		public static async Task ExecuteAsync<CN, CMD>(this CN connection, Func<CN, CMD> commandSelector)
+			where CN : DbConnection
+			where CMD : DbCommand {
+
+			await using (connection) {
+				await using var cmd = commandSelector(connection);
+				await cmd.Connection!.OpenAsync();
+				await cmd.ExecuteNonQueryAsync();
+				await cmd.Connection!.CloseAsync();
+			}
 		}
 	}
-
-
 }

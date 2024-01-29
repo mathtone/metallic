@@ -1,14 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Content Include="..\..\..\Icon.png" Link="Icon.png" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Npgsql" Version="8.0.1" />
