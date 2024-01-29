@@ -23,4 +23,13 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="TestDbCommand.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="TestDbConnection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

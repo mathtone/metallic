@@ -5,7 +5,5 @@ namespace Metallic.Data {
 		CN CreateConnection();
 	}
 
-	public interface IDataReaderExtensions {
-
-	}
+	
 }

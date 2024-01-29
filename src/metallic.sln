@@ -5,6 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Solution Items", "0. Solution Items", "{53B2EF7D-683A-4B98-B11D-F32A62CF55BB}"
 	ProjectSection(SolutionItems) = preProject
+		..\.runsettings = ..\.runsettings
 		..\.circleci\config.yml = ..\.circleci\config.yml
 		Directory.Build.props = Directory.Build.props
 		..\Icon.png = ..\Icon.png
@@ -12,19 +13,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Solution Items", "0. Sol
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Support", "tests\Tests.Support\Tests.Support.csproj", "{0DC24155-2E5D-4AB7-A0B8-A316E167CD23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_Sandbox", "tests\Sandbox\_Sandbox.csproj", "{43E6A659-C5BC-4335-880E-1E9BA27234F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_Sandbox", "tests\Sandbox\_Sandbox.csproj", "{43E6A659-C5BC-4335-880E-1E9BA27234F4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "X. Tests", "X. Tests", "{82BAA4A1-9238-44C2-B615-94FCC19CDBD2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Support", "Support", "{8D6F94E2-A0A7-4BA8-84CE-A2F188FF3D09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metallic.Data.Npgsql", "sdk\Metallic.Data.Npgsql\Metallic.Data.Npgsql.csproj", "{5B7DB4AE-1902-469F-9B6D-3D76798DBDE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metallic.Data.Npgsql", "sdk\Metallic.Data.Npgsql\Metallic.Data.Npgsql.csproj", "{5B7DB4AE-1902-469F-9B6D-3D76798DBDE0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "A. Sdk", "A. Sdk", "{E8574086-4877-4F58-96FA-0670D90082AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Metallic.Data.Npgsql", "tests\Tests.Metallic.Data.Npgsql\Tests.Metallic.Data.Npgsql.csproj", "{9D22F897-4F7A-43DD-AE30-338FD610305C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Metallic.Data.Npgsql", "tests\Tests.Metallic.Data.Npgsql\Tests.Metallic.Data.Npgsql.csproj", "{9D22F897-4F7A-43DD-AE30-338FD610305C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metallic.Data", "sdk\Metallic.Data\Metallic.Data.csproj", "{9CE58690-4F4A-4ED9-9D91-A42A0F8405CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metallic.Data", "sdk\Metallic.Data\Metallic.Data.csproj", "{9CE58690-4F4A-4ED9-9D91-A42A0F8405CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Metallic.Data", "tests\Tests.Metallic.Data\Tests.Metallic.Data.csproj", "{E3E7880F-F950-485F-9412-AF0D34BEFCF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +55,10 @@ Global
 		{9CE58690-4F4A-4ED9-9D91-A42A0F8405CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CE58690-4F4A-4ED9-9D91-A42A0F8405CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CE58690-4F4A-4ED9-9D91-A42A0F8405CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3E7880F-F950-485F-9412-AF0D34BEFCF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3E7880F-F950-485F-9412-AF0D34BEFCF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3E7880F-F950-485F-9412-AF0D34BEFCF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3E7880F-F950-485F-9412-AF0D34BEFCF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +70,7 @@ Global
 		{5B7DB4AE-1902-469F-9B6D-3D76798DBDE0} = {E8574086-4877-4F58-96FA-0670D90082AB}
 		{9D22F897-4F7A-43DD-AE30-338FD610305C} = {82BAA4A1-9238-44C2-B615-94FCC19CDBD2}
 		{9CE58690-4F4A-4ED9-9D91-A42A0F8405CE} = {E8574086-4877-4F58-96FA-0670D90082AB}
+		{E3E7880F-F950-485F-9412-AF0D34BEFCF1} = {82BAA4A1-9238-44C2-B615-94FCC19CDBD2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {963B156C-CA2E-4045-8823-393D107C4020}
