@@ -3,7 +3,12 @@ using Npgsql;
 
 namespace Tests.Metallic.Data.Npgsql.Support {
 
-	public class NpgsqlDbConnector(string connectionString) : IDbConnector<NpgsqlConnection>, IAsyncDbConnector<NpgsqlConnection> {
+	public class NpgsqlDbConnector : IDbConnector<NpgsqlConnection>, IAsyncDbConnector<NpgsqlConnection> {
+
+		private readonly string connectionString;
+
+		public NpgsqlDbConnector(string connectionString) =>
+			this.connectionString = connectionString;
 
 		public virtual NpgsqlConnection CreateConnection() =>
 			new(connectionString);

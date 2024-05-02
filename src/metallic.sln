@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metallic", "sdk\Metallic\Me
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Solution Items", "0. Solution Items", "{53B2EF7D-683A-4B98-B11D-F32A62CF55BB}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		..\.circleci\config.yml = ..\.circleci\config.yml
 		Directory.Build.props = Directory.Build.props
 		..\Icon.png = ..\Icon.png
@@ -34,15 +35,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metallic.Async", "sdk\Metal
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Metallic.Async", "tests\Tests.Metallic.Async\Tests.Metallic.Async.csproj", "{3E412DB5-BE6A-40E9-A79C-F731B9DD341A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_Sandbox", "tests\_Sandbox\_Sandbox.csproj", "{C214E1FB-3AA3-4918-ABD0-BDB889E962B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_Sandbox", "tests\_Sandbox\_Sandbox.csproj", "{C214E1FB-3AA3-4918-ABD0-BDB889E962B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metallic.Telemetry", "sdk\Metallic.Telemetry\Metallic.Telemetry.csproj", "{7FB8B65B-6D59-4A0D-8121-150CAB81B48C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metallic.Telemetry", "sdk\Metallic.Telemetry\Metallic.Telemetry.csproj", "{7FB8B65B-6D59-4A0D-8121-150CAB81B48C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Metallic.Telemetry", "tests\Tests.Metallic.Telemetry\Tests.Metallic.Telemetry.csproj", "{FC5C1458-A7B0-4E68-9D66-0E517B27C17F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Metallic.Telemetry", "tests\Tests.Metallic.Telemetry\Tests.Metallic.Telemetry.csproj", "{FC5C1458-A7B0-4E68-9D66-0E517B27C17F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Support", "tests\Tests.Support\Tests.Support.csproj", "{310477A8-AA63-4930-AEB9-8CD59802B8B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Support", "tests\Tests.Support\Tests.Support.csproj", "{310477A8-AA63-4930-AEB9-8CD59802B8B7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Support", "Support", "{CB15AD52-9FC3-44DF-8B22-1D3DA8B4CE92}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsole", "tests\TestConsole\TestConsole.csproj", "{6A27C63B-0E50-4F2B-8251-2F2E746E6A9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metallic.Math", "sdk\Metallic.Math\Metallic.Math.csproj", "{3E8BB3A9-DB9D-461B-BD60-9A77D7F8310F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -106,6 +111,14 @@ Global
 		{310477A8-AA63-4930-AEB9-8CD59802B8B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{310477A8-AA63-4930-AEB9-8CD59802B8B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{310477A8-AA63-4930-AEB9-8CD59802B8B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A27C63B-0E50-4F2B-8251-2F2E746E6A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A27C63B-0E50-4F2B-8251-2F2E746E6A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A27C63B-0E50-4F2B-8251-2F2E746E6A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A27C63B-0E50-4F2B-8251-2F2E746E6A9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E8BB3A9-DB9D-461B-BD60-9A77D7F8310F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E8BB3A9-DB9D-461B-BD60-9A77D7F8310F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E8BB3A9-DB9D-461B-BD60-9A77D7F8310F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E8BB3A9-DB9D-461B-BD60-9A77D7F8310F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -126,6 +139,7 @@ Global
 		{FC5C1458-A7B0-4E68-9D66-0E517B27C17F} = {1C2004A4-72AC-4919-A269-62B0C2E8FEC8}
 		{310477A8-AA63-4930-AEB9-8CD59802B8B7} = {CB15AD52-9FC3-44DF-8B22-1D3DA8B4CE92}
 		{CB15AD52-9FC3-44DF-8B22-1D3DA8B4CE92} = {1C2004A4-72AC-4919-A269-62B0C2E8FEC8}
+		{3E8BB3A9-DB9D-461B-BD60-9A77D7F8310F} = {D27667BD-F9D8-464A-913D-F0BDE1DB9E99}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {963B156C-CA2E-4045-8823-393D107C4020}
