@@ -7,7 +7,11 @@ using Tests.Support;
 using Xunit.Abstractions;
 
 namespace Tests.Metallic.Data.Npgsql.Support {
-	public class NpgsqlTest(ITestOutputHelper output) : ServiceComponentTest(output) {
+	public class NpgsqlTest : ServiceComponentTest {
+
+		public NpgsqlTest(ITestOutputHelper output) :
+			base(output) { }
+
 		//protected override IServiceCollection ConfigureServices(IServiceCollection services) => base
 		//	.ConfigureServices(services)
 		//	.AddSingleton<IAsyncDbConnector<NpgsqlConnection>, TestDbConnector>();

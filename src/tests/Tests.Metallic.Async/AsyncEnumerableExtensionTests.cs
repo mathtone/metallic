@@ -4,7 +4,12 @@ using Xunit.Abstractions;
 
 namespace Tests.Metallic.Async {
 
-	public class AsyncEnumerableExtensionTests(ITestOutputHelper output) {
+	public class AsyncEnumerableExtensionTests {
+		private readonly ITestOutputHelper output;
+
+		public AsyncEnumerableExtensionTests(ITestOutputHelper output) {
+			this.output = output;
+		}
 
 		[Theory]
 		[InlineData(10, 10, 1, 10)]
@@ -54,7 +59,7 @@ namespace Tests.Metallic.Async {
 				.ReportEvery(10, reports.Add)
 				.ToArrayAsync();
 
-			Assert.Equal([10L, 20L, 30L, 35L], reports);
+			Assert.Equal(new() { 10L, 20L, 30L, 35L }, reports);
 		}
 
 		[Fact]
@@ -65,7 +70,7 @@ namespace Tests.Metallic.Async {
 				.ReportEvery(10, c => Task.Run(() => reports.Add(c)))
 				.ToArrayAsync();
 
-			Assert.Equal([10L, 20L, 30L, 35L], reports);
+			Assert.Equal(new() { 10L, 20L, 30L, 35L }, reports);
 		}
 
 		[Fact]

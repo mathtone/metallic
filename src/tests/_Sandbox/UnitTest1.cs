@@ -8,7 +8,11 @@ using Tests.Support;
 using Xunit.Abstractions;
 
 namespace Sandbox {
-	public class SandboxTests(ITestOutputHelper output) : ServiceComponentTest(output) {
+	public class SandboxTests : ServiceComponentTest {
+
+		public SandboxTests(ITestOutputHelper output) : base(output) {
+
+		}
 
 		[Fact]
 		public async Task TrySomethingAsync() {
@@ -38,9 +42,16 @@ namespace Sandbox {
 		public I Item { get; }
 	}
 
-	public readonly struct StreamProcessResponse<T>(T item, bool isSuccessful = true, Exception? exception = default) : IItemResult<T> {
-		public T Item { get; } = item;
-		public bool IsSuccessful { get; } = isSuccessful;
-		public Exception? Exception { get; } = exception;
+	public readonly struct StreamProcessResponse<T> : IItemResult<T> {
+
+		public T Item { get; }
+		public bool IsSuccessful { get; }
+		public Exception? Exception { get; }
+
+		public StreamProcessResponse(T item, bool isSuccessful = true, Exception? exception = default) {
+			Item = item;
+			IsSuccessful = isSuccessful;
+			Exception = exception;
+		}
 	}
 }

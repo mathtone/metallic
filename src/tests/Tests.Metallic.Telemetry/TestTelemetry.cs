@@ -4,7 +4,13 @@ using Serilog;
 using Metallic.Async;
 
 namespace Tests.Metallic.Telemetry {
-	public class TestTelemetry(Microsoft.Extensions.Logging.ILogger logger) : ITelemetry {
+	public class TestTelemetry : ITelemetry {
+
+		private readonly Microsoft.Extensions.Logging.ILogger logger;
+
+		public TestTelemetry(Microsoft.Extensions.Logging.ILogger logger) {
+			this.logger = logger;
+		}
 
 		public IDisposable? BeginScope<TState>(TState state) where TState : notnull => logger.BeginScope(state);
 
@@ -47,8 +53,9 @@ namespace Tests.Metallic.Telemetry {
 		public I Item { get; set; }
 	}
 
-	public class TestTelemetry<T>(ILogger<T> logger) : TestTelemetry(logger), ITelemetry<T> {
-
+	public class TestTelemetry<T> : TestTelemetry, ITelemetry<T> {
+		public TestTelemetry(ILogger<T> logger) :
+			base(logger) { }
 	}
 
 	public interface ITelemetry<T> : ITelemetry, ILogger<T> {

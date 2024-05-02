@@ -3,8 +3,13 @@ using Serilog.Events;
 using Xunit.Abstractions;
 
 namespace Tests.Support {
-	public class TestOutputSink(ITestOutputHelper testOutputHelper) : ILogEventSink {
+	public class TestOutputSink : ILogEventSink {
 
+		private readonly ITestOutputHelper testOutputHelper;
+
+		public TestOutputSink(ITestOutputHelper testOutputHelper) {
+			this.testOutputHelper = testOutputHelper;
+		}
 
 		public void Emit(LogEvent logEvent) {
 			if (logEvent == null) return;

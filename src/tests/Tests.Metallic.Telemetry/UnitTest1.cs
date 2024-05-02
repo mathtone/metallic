@@ -10,9 +10,10 @@ using Tests.Support;
 
 namespace Tests.Metallic.Telemetry {
 
-	
+	public class UnitTest1 : ServiceComponentTest {
 
-	public class UnitTest1(ITestOutputHelper output) : ServiceComponentTest(output) {
+		public UnitTest1(ITestOutputHelper output) :
+			base(output) {}
 
 		[Fact]
 		public async Task Test1Async() {
@@ -29,10 +30,10 @@ namespace Tests.Metallic.Telemetry {
 			var summary = await telemetry.SummarizeAsync(
 				"Test",
 				() => data
-					.Process(i=>telemetry.Collect("Test", i))
+					.Process(i => telemetry.Collect("Test", i))
 					.Process(async data => await data.CountAsync())
 			);
 			Assert.Equal(100, summary.Result);
 		}
-	}	
+	}
 }

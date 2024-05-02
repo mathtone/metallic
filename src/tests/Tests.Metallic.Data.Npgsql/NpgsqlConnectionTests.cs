@@ -13,7 +13,11 @@ using Tests.Metallic.Data.Npgsql.Support;
 using Xunit.Abstractions;
 
 namespace Tests.Metallic.Data.Npgsql {
-	public class NpgsqlConnectionTests(ITestOutputHelper output) : NpgsqlTest(output) {
+	public class NpgsqlConnectionTests : NpgsqlTest {
+
+		public NpgsqlConnectionTests(ITestOutputHelper output) : base(output) {
+
+		}
 
 		//[Fact]
 		//public async Task Open_Connection() {

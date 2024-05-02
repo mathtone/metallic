@@ -6,7 +6,11 @@ using Xunit;
 using Xunit.Abstractions;
 
 namespace Tests.Metallic {
-	public class LoggingServiceTest(ITestOutputHelper output) : ServiceComponentTest(output) {
+	public class LoggingServiceTest : ServiceComponentTest {
+
+		public LoggingServiceTest(ITestOutputHelper output) : base(output) {
+
+		}
 
 		[Fact]
 		public void Log_To_Output() {
