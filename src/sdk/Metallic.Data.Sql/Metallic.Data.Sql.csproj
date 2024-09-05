@@ -1,7 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <Content Include="..\..\..\Icon.png" Link="Icon.png" />
-  </ItemGroup>
-
-</Project>
