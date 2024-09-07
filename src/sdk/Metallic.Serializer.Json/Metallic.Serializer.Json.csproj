@@ -1,0 +1,5 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\Metallic.Serializer\Metallic.Serializer.csproj" />
+  </ItemGroup>
+</Project>
