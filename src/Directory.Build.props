@@ -1,8 +1,0 @@
-<Project>
-	<PropertyGroup>
-		<Version>1.0.0-gamma</Version>
-		<TargetFrameworks>net9.0;</TargetFrameworks>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
-</Project>

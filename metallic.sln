@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution Items", ".solution Items", "{14D0BF04-8940-40F2-974C-CADEEAAAD491}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.circleci\config.yml = .circleci\config.yml
+		Directory.Build.props = Directory.Build.props
+		Icon.png = Icon.png
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "a. source", "a. source", "{6C7F4639-F3BB-48DE-9E2A-4AD12EAD2460}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "z. sandbox", "z. sandbox", "{B35A65C6-D688-4385-A27A-731712C77D6B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x. tests", "x. tests", "{2A1CD977-3660-4458-8D3C-610151882363}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox.Tests", "sandbox\Sandbox.Tests\Sandbox.Tests.csproj", "{31E35C93-BBC7-4A49-936D-9857A799B031}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metallic.Hosting", "src\Metallic.Hosting\Metallic.Hosting.csproj", "{DEC1F9B3-B267-426D-8691-4EF6E47546AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Metallic.Hosting", "tests\Tests.Metallic.Hosting\Tests.Metallic.Hosting.csproj", "{3CA03213-350C-44E0-8112-2F596CE0A49C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31E35C93-BBC7-4A49-936D-9857A799B031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31E35C93-BBC7-4A49-936D-9857A799B031}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31E35C93-BBC7-4A49-936D-9857A799B031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31E35C93-BBC7-4A49-936D-9857A799B031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEC1F9B3-B267-426D-8691-4EF6E47546AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEC1F9B3-B267-426D-8691-4EF6E47546AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEC1F9B3-B267-426D-8691-4EF6E47546AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEC1F9B3-B267-426D-8691-4EF6E47546AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CA03213-350C-44E0-8112-2F596CE0A49C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CA03213-350C-44E0-8112-2F596CE0A49C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CA03213-350C-44E0-8112-2F596CE0A49C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CA03213-350C-44E0-8112-2F596CE0A49C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{31E35C93-BBC7-4A49-936D-9857A799B031} = {B35A65C6-D688-4385-A27A-731712C77D6B}
+		{DEC1F9B3-B267-426D-8691-4EF6E47546AC} = {6C7F4639-F3BB-48DE-9E2A-4AD12EAD2460}
+		{3CA03213-350C-44E0-8112-2F596CE0A49C} = {2A1CD977-3660-4458-8D3C-610151882363}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C0A0A1CB-05B5-45BA-8071-2044BD00EFFC}
+	EndGlobalSection
+EndGlobal

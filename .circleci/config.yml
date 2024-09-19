@@ -22,13 +22,11 @@ commands:
           fi
           
           echo "export PKG_VER=$build" >> $BASH_ENV
-          echo "export PKG_SFX=$suffix" >> $BASH_ENV
-orbs:
-  sonarcloud: sonarsource/sonarcloud@1.0.3        
+          echo "export PKG_SFX=$suffix" >> $BASH_ENV   
 jobs:
   get-code:
     docker:
-      - image: mcr.microsoft.com/dotnet/sdk:6.0
+      - image: mcr.microsoft.com/dotnet/sdk:9.0
     working_directory: /mnt/ramdisk
     steps:
       - checkout
@@ -41,15 +39,15 @@ jobs:
       
   integration-tests:
     docker:
-      - image: mcr.microsoft.com/dotnet/sdk:6.0
-      - image: postgres
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-      - image: mcr.microsoft.com/mssql/server:2022-latest
-        environment:
-          MSSQL_SA_PASSWORD: test!1234
-          ACCEPT_EULA: Y
+      - image: mcr.microsoft.com/dotnet/sdk:9.0
+      # - image: postgres
+      #   environment:
+      #     POSTGRES_USER: postgres
+      #     POSTGRES_PASSWORD: postgres
+      # - image: mcr.microsoft.com/mssql/server:2022-latest
+      #   environment:
+      #     MSSQL_SA_PASSWORD: test!1234
+      #     ACCEPT_EULA: Y
     working_directory: /mnt/ramdisk
     steps:
       - attach_workspace:
