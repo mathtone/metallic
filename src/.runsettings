@@ -29,17 +29,17 @@ Included items must then not match any entries in the exclude list to remain inc
 						<!-- Match assembly file paths: -->
 						<ModulePaths>
 							<Include>
-								<ModulePath>.*\Metallic.dll$</ModulePath>
+								<!--<ModulePath>.*\Metallic.dll$</ModulePath>
 								<ModulePath>.*\Metallic.Data.dll$</ModulePath>
 								<ModulePath>.*\Metallic.Data.Npgsql.dll$</ModulePath>
-								<ModulePath>.*\Metallic.Data.Sql.dll$</ModulePath>
+								<ModulePath>.*\Metallic.Data.Sql.dll$</ModulePath>-->
 								
 							</Include>
 							<Exclude>
-								<ModulePath>.*\Tests.Metallic.dll$</ModulePath>
+								<!--<ModulePath>.*\Tests.Metallic.dll$</ModulePath>
 								<ModulePath>.*\Tests.Metallic.Data.dll$</ModulePath>
 								<ModulePath>.*\Tests.Metallic.Data.Npgsql.dll$</ModulePath>
-								<ModulePath>.*\Tests.Metallic.Data.Sql.dll$</ModulePath>
+								<ModulePath>.*\Tests.Metallic.Data.Sql.dll$</ModulePath>-->
 							</Exclude>
 							<!--
 							<Exclude>
