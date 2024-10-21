@@ -39,9 +39,9 @@ jobs:
             - LICENSE.txt
             - ./
       
-  integration-tests:
+  integration-tests-net6:
     docker:
-      - image: mcr.microsoft.com/dotnet/sdk:8.0
+      #- image: mcr.microsoft.com/dotnet/sdk:8.0
       - image: mcr.microsoft.com/dotnet/sdk:6.0
       # - image: mcr.microsoft.com/dotnet/sdk:9.0
       # - image: postgres
@@ -59,9 +59,9 @@ jobs:
       - run:
             name: Run .NET 6.0 Tests
             command: dotnet test src/metallic.sln --configuration Release --framework net6.0
-      - run:
-            name: Run .NET 8.0 Tests
-            command: dotnet test src/metallic.sln --configuration Release --framework net8.0
+      # - run:
+      #       name: Run .NET 8.0 Tests
+      #       command: dotnet test src/metallic.sln --configuration Release --framework net8.0
       # - run: dotnet test src/metallic.sln --configuration Release
       
   publish-nuget:
