@@ -78,7 +78,7 @@ workflows:
   build-release:
     jobs:
       - get-code
-      - integration-tests:
+      - integration-tests-net6:
           context: MATHTONE_DEV
           requires:
             - get-code
@@ -90,7 +90,7 @@ workflows:
           context: MATHTONE_DEV
           type: approval
           requires:
-            - integration-tests
+            - integration-tests-net6
       - publish-nuget:
           filters:
             branches:
