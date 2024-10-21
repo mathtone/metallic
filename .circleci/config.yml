@@ -38,40 +38,60 @@ jobs:
           paths:
             - LICENSE.txt
             - ./
-      
   integration-tests-net6:
-    docker:
-      
-      #- image: mcr.microsoft.com/dotnet/sdk:6.0
-      - image: mcr.microsoft.com/dotnet/sdk:8.0
-      # - image: mcr.microsoft.com/dotnet/sdk:9.0
-      # - image: postgres
-      #   environment:
-      #     POSTGRES_USER: postgres
-      #     POSTGRES_PASSWORD: postgres
-      # - image: mcr.microsoft.com/mssql/server:2022-latest
-      #   environment:
-      #     MSSQL_SA_PASSWORD: test!1234
-      #     ACCEPT_EULA: Y
-    working_directory: /mnt/ramdisk
-    steps:
-      - attach_workspace:
-          at: .
-      - run:
-            name: Install .NET 6.0 Runtime
+      docker:
+        - image: mcr.microsoft.com/dotnet/sdk:8.0  # .NET 8 SDK
+      working_directory: /mnt/ramdisk
+      steps:
+        - attach_workspace:
+            at: .
+        - run:
+            name: Add Microsoft Package Feed and Install .NET 6.0 Runtime
             command: |
+              wget https://packages.microsoft.com/config/debian/11/prod.list -O /etc/apt/sources.list.d/microsoft-prod.list
+              wget https://packages.microsoft.com/keys/microsoft.asc -O- | gpg --dearmor > /etc/apt/trusted.gpg.d/microsoft.gpg
               apt-get update
               apt-get install -y dotnet-runtime-6.0
-      - run:
+        - run:
             name: Run .NET 6.0 Build
             command: dotnet build src/metallic.sln --configuration Release --framework net6.0
-      - run:
+        - run:
             name: Run .NET 6.0 Tests
             command: dotnet test src/metallic.sln --configuration Release --framework net6.0
-      # - run:
-      #       name: Run .NET 8.0 Tests
-      #       command: dotnet test src/metallic.sln --configuration Release --framework net8.0
-      # - run: dotnet test src/metallic.sln --configuration Release
+
+  # integration-tests-net6:
+  #   docker:
+      
+  #     #- image: mcr.microsoft.com/dotnet/sdk:6.0
+  #     - image: mcr.microsoft.com/dotnet/sdk:8.0
+  #     # - image: mcr.microsoft.com/dotnet/sdk:9.0
+  #     # - image: postgres
+  #     #   environment:
+  #     #     POSTGRES_USER: postgres
+  #     #     POSTGRES_PASSWORD: postgres
+  #     # - image: mcr.microsoft.com/mssql/server:2022-latest
+  #     #   environment:
+  #     #     MSSQL_SA_PASSWORD: test!1234
+  #     #     ACCEPT_EULA: Y
+  #   working_directory: /mnt/ramdisk
+  #   steps:
+  #     - attach_workspace:
+  #         at: .
+  #     - run:
+  #           name: Install .NET 6.0 Runtime
+  #           command: |
+  #             apt-get update
+  #             apt-get install -y dotnet-runtime-6.0
+  #     - run:
+  #           name: Run .NET 6.0 Build
+  #           command: dotnet build src/metallic.sln --configuration Release --framework net6.0
+  #     - run:
+  #           name: Run .NET 6.0 Tests
+  #           command: dotnet test src/metallic.sln --configuration Release --framework net6.0
+  #     # - run:
+  #     #       name: Run .NET 8.0 Tests
+  #     #       command: dotnet test src/metallic.sln --configuration Release --framework net8.0
+  #     # - run: dotnet test src/metallic.sln --configuration Release
       
   # publish-nuget:
   #   docker:
