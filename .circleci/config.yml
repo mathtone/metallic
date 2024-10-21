@@ -28,7 +28,7 @@ orbs:
 jobs:
   get-code:
     docker:
-      - image: mcr.microsoft.com/dotnet/sdk:6.0
+      # - image: mcr.microsoft.com/dotnet/sdk:6.0
       - image: mcr.microsoft.com/dotnet/sdk:8.0
     working_directory: /mnt/ramdisk
     steps:
@@ -38,12 +38,11 @@ jobs:
           paths:
             - LICENSE.txt
             - ./
-            # - tools
       
   integration-tests:
     docker:
       #- image: mcr.microsoft.com/dotnet/sdk:6.0
-      - image: mcr.microsoft.com/dotnet/sdk:6.0
+      #- image: mcr.microsoft.com/dotnet/sdk:6.0
       - image: mcr.microsoft.com/dotnet/sdk:8.0
       # - image: mcr.microsoft.com/dotnet/sdk:9.0
       # - image: postgres
@@ -58,62 +57,8 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      # - run: ls -l
-      # - run: ls ./src -l
-      # - run: ls ./src/tests -l
-      # - run: dotnet build src/metallic.sln --configuration Release
       - run: dotnet test src/metallic.sln --configuration Release
-      #- sonarcloud/scan
-
-  # disintegration-tests:
-  #   docker:
-  #     - image: mcr.microsoft.com/dotnet/sdk:6.0
-  #     - image: postgres
-  #       environment:
-  #         POSTGRES_USER: postgres
-  #         POSTGRES_PASSWORD: postgres
-  #     - image: mcr.microsoft.com/mssql/server:2022-latest
-  #       environment:
-  #         MSSQL_SA_PASSWORD: test!1234
-  #         ACCEPT_EULA: Y
-  #   working_directory: /mnt/ramdisk
-  #   steps:
-  #     - attach_workspace:
-  #         at: .
-  #     - get-version
-  #     - run: |
-  #         mkdir temp
-  #         mkdir packages
-  #         ls -l
-  #     - run: dotnet build tools/build-util/build-util.csproj --output temp
-  #     - run: dotnet temp/build-util.dll src/mathtone-magic.sln
-  #     - run: cat temp/process-sln.sh
-  #     - run: |
-  #         echo SUFFIX - $PKG_SFX_TAG
-  #         dotnet restore src/mathtone-magic.sln
-  #         dotnet nuget remove source nuget.org
-  #         dotnet nuget add source /mnt/ramdisk/packages -n local
-  #         bash temp/process-sln.sh
-  #     - run: dotnet test src/mathtone-magic.sln --configuration Release -- xunit.parallelizeAssembly=true
-  #     - persist_to_workspace:
-  #         root: .
-  #         paths:
-  #           - packages
-  # publish-artifactory:
-  #   docker:
-  #     - image: mcr.microsoft.com/dotnet/sdk:6.0
-  #   steps:
-  #     - attach_workspace:
-  #         at: .
-  #     - run:
-  #         name: "Add Artifactory"
-  #         command: dotnet nuget add source https://mathtone.jfrog.io/artifactory/api/nuget/v3/mathtone-dev --name Mathtone-Dev --username ${ARTIFACTORY_USER} --password ${ARTIFACTORY_PWD} --store-password-in-clear-text
-  #     - run:
-  #        name: Publish to Artifactory
-  #        command: |
-  #           ls -l packages
-  #           dotnet nuget push packages/*.nupkg --source Mathtone-Dev
-
+      
   publish-nuget:
     docker:
       - image: mcr.microsoft.com/dotnet/sdk:8.0
@@ -132,23 +77,6 @@ workflows:
           context: MATHTONE_DEV
           requires:
             - get-code
-      # - disintegration-tests:
-      #     filters:
-      #       branches:
-      #          only:
-      #             - /release.*/
-      #     context: MATHTONE_DEV
-      #     requires:
-      #       - get-code 
-      # - publish-artifactory:
-      #     filters:
-      #       branches:
-      #          only:
-      #             - /release.*/
-      #     context: MATHTONE_DEV
-      #     requires:
-      #       - integration-tests
-      #       - disintegration-tests
       - approve-ship:
           filters:
             branches:
