@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\sdk\Metallic\Metallic.csproj" />
+    <ProjectReference Include="..\..\sdk\Metallic.Data\Metallic.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>
