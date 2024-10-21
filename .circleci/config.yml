@@ -56,7 +56,13 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - run: dotnet test src/metallic.sln --configuration Release
+      - run:
+            name: Run .NET 6.0 Tests
+            command: dotnet test src/metallic.sln --configuration Release --framework net6.0
+      - run:
+            name: Run .NET 8.0 Tests
+            command: dotnet test src/metallic.sln --configuration Release --framework net8.0
+      # - run: dotnet test src/metallic.sln --configuration Release
       
   publish-nuget:
     docker:
