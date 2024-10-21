@@ -54,10 +54,10 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - run: ls -l
-      - run: ls ./src -l
-      - run: ls ./src/tests -l
-      - run: dotnet build src/metallic.sln --configuration Release
+      # - run: ls -l
+      # - run: ls ./src -l
+      # - run: ls ./src/tests -l
+      # - run: dotnet build src/metallic.sln --configuration Release
       - run: dotnet test src/metallic.sln --configuration Release
       #- sonarcloud/scan
 
