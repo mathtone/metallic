@@ -28,6 +28,7 @@ orbs:
 jobs:
   get-code:
     docker:
+      - image: mcr.microsoft.com/dotnet/sdk:6.0
       - image: mcr.microsoft.com/dotnet/sdk:8.0
     working_directory: /mnt/ramdisk
     steps:
@@ -42,6 +43,7 @@ jobs:
   integration-tests:
     docker:
       #- image: mcr.microsoft.com/dotnet/sdk:6.0
+      - image: mcr.microsoft.com/dotnet/sdk:6.0
       - image: mcr.microsoft.com/dotnet/sdk:8.0
       # - image: mcr.microsoft.com/dotnet/sdk:9.0
       # - image: postgres
