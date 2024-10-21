@@ -39,7 +39,7 @@ jobs:
                 - ./
     integration-tests-net6:
         docker:
-        - image: mcr.microsoft.com/dotnet/sdk:6.0  # Use .NET 6 SDK
+        - image: mcr.microsoft.com/dotnet/sdk:8.0  # Use .NET 6 SDK
         working_directory: /mnt/ramdisk
         steps:
         - attach_workspace:
