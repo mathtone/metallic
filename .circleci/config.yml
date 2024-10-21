@@ -58,6 +58,11 @@ jobs:
       - attach_workspace:
           at: .
       - run:
+            name: Install .NET 6.0 Runtime
+            command: |
+              apt-get update
+              apt-get install -y dotnet-runtime-6.0
+      - run:
             name: Run .NET 6.0 Build
             command: dotnet build src/metallic.sln --configuration Release --framework net6.0
       - run:
