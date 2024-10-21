@@ -26,23 +26,23 @@ commands:
 orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.3        
 jobs:
-  get-code:
-    docker:
-      - image: mcr.microsoft.com/dotnet/sdk:8.0
-      - image: mcr.microsoft.com/dotnet/sdk:6.0
-    working_directory: /mnt/ramdisk
-    steps:
-      - checkout
-      - persist_to_workspace:
-          root: .
-          paths:
-            - LICENSE.txt
-            - ./
+    get-code:
+        docker:
+            - image: mcr.microsoft.com/dotnet/sdk:8.0
+            - image: mcr.microsoft.com/dotnet/sdk:6.0
+        working_directory: /mnt/ramdisk
+        steps:
+            - checkout
+            - persist_to_workspace:
+                root: .
+                paths:
+                - LICENSE.txt
+                - ./
     integration-tests-net6:
-      docker:
+        docker:
         - image: mcr.microsoft.com/dotnet/sdk:6.0  # Use .NET 6 SDK
-      working_directory: /mnt/ramdisk
-      steps:
+        working_directory: /mnt/ramdisk
+        steps:
         - attach_workspace:
             at: .
         - run:
@@ -53,10 +53,10 @@ jobs:
             command: dotnet test src/metallic.sln --configuration Release --framework net6.0
 
     integration-tests-net8:
-      docker:
+        docker:
         - image: mcr.microsoft.com/dotnet/sdk:8.0  # Use .NET 8 SDK
-      working_directory: /mnt/ramdisk
-      steps:
+        working_directory: /mnt/ramdisk
+        steps:
         - attach_workspace:
             at: .
         - run:
