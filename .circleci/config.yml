@@ -37,7 +37,7 @@ jobs:
                 paths:
                 - LICENSE.txt
                 - ./
-    integration-tests-net6:
+    integration-tests-net8:
         docker:
         - image: mcr.microsoft.com/dotnet/sdk:8.0  # Use .NET 6 SDK
         working_directory: /mnt/ramdisk
@@ -45,11 +45,8 @@ jobs:
         - attach_workspace:
             at: .
         - run:
-            name: Run .NET 6.0 Build
-            command: dotnet build src/metallic.sln --configuration Release
-        - run:
-            name: Run .NET 6.0 Tests
-            command: dotnet test src/metallic.sln --configuration Release
+            name: Run .NET 8.0 Tests
+            command: dotnet test src/metallic.sln --configuration Release --framework net8.0
 
     # integration-tests-net8:
     #     docker:
@@ -116,7 +113,7 @@ workflows:
   build-release:
     jobs:
       - get-code
-      - integration-tests-net6:
+      - integration-tests-net8:
           context: MATHTONE_DEV
           requires:
             - get-code
