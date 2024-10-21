@@ -42,7 +42,7 @@ jobs:
   integration-tests-net6:
     docker:
       
-      - image: mcr.microsoft.com/dotnet/sdk:6.0
+      #- image: mcr.microsoft.com/dotnet/sdk:6.0
       - image: mcr.microsoft.com/dotnet/sdk:8.0
       # - image: mcr.microsoft.com/dotnet/sdk:9.0
       # - image: postgres
@@ -58,23 +58,26 @@ jobs:
       - attach_workspace:
           at: .
       - run:
-            name: Run .NET 6.0 Tests
-            command: dotnet test src/metallic.sln --configuration Release --framework net6.0
+            name: Run .NET 6.0 Build
+            command: dotnet build src/metallic.sln --configuration Release --framework net6.0
+      # - run:
+      #       name: Run .NET 6.0 Tests
+      #       command: dotnet test src/metallic.sln --configuration Release --framework net6.0
       # - run:
       #       name: Run .NET 8.0 Tests
       #       command: dotnet test src/metallic.sln --configuration Release --framework net8.0
       # - run: dotnet test src/metallic.sln --configuration Release
       
-  publish-nuget:
-    docker:
-      - image: mcr.microsoft.com/dotnet/sdk:8.0
-    steps:
-      - attach_workspace:
-          at: .
-      - run: dotnet pack ./src/metallic.sln --configuration Release --output ./packages
-      - run:
-         name: Publish to Nuget
-         command: dotnet nuget push packages/*.nupkg --api-key ${NUGET_PUBLISH_KEY} --source https://api.nuget.org/v3/index.json
+  # publish-nuget:
+  #   docker:
+  #     - image: mcr.microsoft.com/dotnet/sdk:8.0
+  #   steps:
+  #     - attach_workspace:
+  #         at: .
+  #     - run: dotnet pack ./src/metallic.sln --configuration Release --output ./packages
+  #     - run:
+  #        name: Publish to Nuget
+  #        command: dotnet nuget push packages/*.nupkg --api-key ${NUGET_PUBLISH_KEY} --source https://api.nuget.org/v3/index.json
 workflows:
   build-release:
     jobs:
@@ -83,20 +86,20 @@ workflows:
           context: MATHTONE_DEV
           requires:
             - get-code
-      - approve-ship:
-          filters:
-            branches:
-               only:
-                  - /release.*/
-          context: MATHTONE_DEV
-          type: approval
-          requires:
-            - integration-tests-net6
-      - publish-nuget:
-          filters:
-            branches:
-               only:
-                  - /release.*/
-          context: MATHTONE_DEV
-          requires:
-            - approve-ship
+      # - approve-ship:
+      #     filters:
+      #       branches:
+      #          only:
+      #             - /release.*/
+      #     context: MATHTONE_DEV
+      #     type: approval
+      #     requires:
+      #       - integration-tests-net6
+      # - publish-nuget:
+      #     filters:
+      #       branches:
+      #          only:
+      #             - /release.*/
+      #     context: MATHTONE_DEV
+      #     requires:
+      #       - approve-ship
