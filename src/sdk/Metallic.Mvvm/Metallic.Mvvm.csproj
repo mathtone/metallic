@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  
-
+  <ItemGroup>
+    <PackageReference Include="ReactiveUI" Version="20.1.63" />
+  </ItemGroup>
 </Project>
