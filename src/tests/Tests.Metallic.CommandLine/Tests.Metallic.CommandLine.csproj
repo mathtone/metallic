@@ -13,6 +13,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\sdk\Metallic.CommandLine\Metallic.CommandLine.csproj" />
+	  <ProjectReference Include="..\..\sdk\Metallic.Testing.Xunit\Metallic.Testing.Xunit.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

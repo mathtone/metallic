@@ -13,7 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\sdk\Metallic.Data.Sqlite\Metallic.Data.Sqlite.csproj" />
+	  <ProjectReference Include="..\..\sdk\Metallic.Avalonia.Host\Metallic.Avalonia.Host.csproj" />
 	  <ProjectReference Include="..\..\sdk\Metallic.Testing.Xunit\Metallic.Testing.Xunit.csproj" />
 	</ItemGroup>
 

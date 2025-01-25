@@ -13,6 +13,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\sdk\Metallic.Mvvm\Metallic.Mvvm.csproj" />
+	  <ProjectReference Include="..\..\sdk\Metallic.Testing.Xunit\Metallic.Testing.Xunit.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
