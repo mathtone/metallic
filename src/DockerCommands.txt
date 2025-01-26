@@ -1,0 +1,6 @@
+#SQL SERVER
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Strong!Passw0rd" -p 6433:1433 --name metallic-test-sqlserver -d mcr.microsoft.com/mssql/server:latest
+#POSTGRESQL
+docker run -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=Strong!Passw0rd -e POSTGRES_DB=testdb -p 6432:5432 --name metallic-test-postgres -d postgres:latest
+#ORACLE
+docker run -e ORACLE_PASSWORD=Strong!Passw0rd -p 6521:1521 -p 6500:5500 --name metallic-test-oracledb -d gvenzl/oracle-xe:latest

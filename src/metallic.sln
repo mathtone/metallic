@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Solution Items", ".Solutio
 		.runsettings = .runsettings
 		..\.circleci\config.yml = ..\.circleci\config.yml
 		Directory.Build.props = Directory.Build.props
+		DockerCommands.txt = DockerCommands.txt
 		..\Icon.png = ..\Icon.png
 	EndProjectSection
 EndProject
@@ -75,6 +76,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Metallic.Avalonia.Host", "tests\Tests.Metallic.Avalonia.Host\Tests.Metallic.Avalonia.Host.csproj", "{51C442DB-AC18-44F1-8D7A-B01DE0A155B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metallic.Testing.Xunit", "sdk\Metallic.Testing.Xunit\Metallic.Testing.Xunit.csproj", "{B2D376AA-6822-4897-AED6-D61DE2202EFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Metallic.Testing.Xunit", "tests\Tests.Metallic.Testing.Xunit\Tests.Metallic.Testing.Xunit.csproj", "{178F5C80-546A-4B70-BB1B-D38056B6B7A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -198,6 +201,10 @@ Global
 		{B2D376AA-6822-4897-AED6-D61DE2202EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2D376AA-6822-4897-AED6-D61DE2202EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2D376AA-6822-4897-AED6-D61DE2202EFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{178F5C80-546A-4B70-BB1B-D38056B6B7A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{178F5C80-546A-4B70-BB1B-D38056B6B7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{178F5C80-546A-4B70-BB1B-D38056B6B7A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{178F5C80-546A-4B70-BB1B-D38056B6B7A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -232,6 +239,7 @@ Global
 		{38DE02BB-5F4B-4AF8-8438-9DC4CDE57AA5} = {D2D57B99-D038-4C81-93A2-8FE096705CF3}
 		{51C442DB-AC18-44F1-8D7A-B01DE0A155B0} = {D2D57B99-D038-4C81-93A2-8FE096705CF3}
 		{B2D376AA-6822-4897-AED6-D61DE2202EFE} = {EABE17C3-7C43-4198-AE75-368459E41B05}
+		{178F5C80-546A-4B70-BB1B-D38056B6B7A6} = {D2D57B99-D038-4C81-93A2-8FE096705CF3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {963B156C-CA2E-4045-8823-393D107C4020}
