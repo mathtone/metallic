@@ -33,4 +33,3 @@ public class ConnectionExtensionsTests(ITestOutputHelper output) : ServiceHostTe
 		.AddSqlDb($"Server=localhost,6433;Database=master;User Id=sa;Password={testPwd};TrustServerCertificate=True;")
 		.AddSqlDbConnector();
 }
-
