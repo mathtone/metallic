@@ -14,6 +14,9 @@ public abstract class ServiceHostTest {
 	protected virtual IHost TestHost => testHost ??= CreateHost();
 	protected virtual IServiceProvider Services => TestHost.Services;
 
+	protected virtual SVC GetKeyedService<SVC>(string key) where SVC : notnull => Services
+		.GetRequiredKeyedService<SVC>(key);
+
 	protected virtual SVC GetService<SVC>() where SVC : notnull => Services
 		.GetRequiredService<SVC>();
 

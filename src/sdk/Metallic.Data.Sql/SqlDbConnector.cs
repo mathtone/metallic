@@ -2,4 +2,9 @@
 using Microsoft.Data.SqlClient;
 
 namespace Metallic.Data.Sql;
-public class SqlDbConnector(SqlConnectorConfiguration config) : AdoDbConnector<SqlConnection>(config) {}
+
+public class SqlDbConnector(IEnumerable<SqlDbConfig> configs) :
+	DbConnector<SqlConnection>(configs), ISqlDbConnector {}
+
+public interface ISqlDbConnector : IDbConnector<SqlConnection> { }
+
