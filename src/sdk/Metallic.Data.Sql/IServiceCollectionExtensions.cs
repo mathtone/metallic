@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Metallic.Data.Ado;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.DependencyInjection;
 using System.Data;
 using System.Data.Common;
@@ -27,4 +28,11 @@ public static class IServiceCollectionExtensions {
 
 	public static IServiceCollection AddSqlDbConnector(this IServiceCollection services) =>
 		services.AddSingleton<ISqlDbConnector, SqlDbConnector>();
+}
+
+public static class SqlConnectionExtensions {
+	public static SqlCommand CreateCommand<CN>(this CN cn, string commandText, CommandType type) where CN : IDbConnection => cn.CreateCommand<SqlCommand>(commandText, type);
+	public static SqlCommand TextCommand<CN>(this CN cn, string commandText) where CN : IDbConnection => cn.CreateCommand(commandText, CommandType.Text);
+	public static SqlCommand ProcCommand<CN>(this CN cn, string commandText) where CN : IDbConnection => cn.CreateCommand(commandText, CommandType.StoredProcedure);
+	public static SqlCommand TableCommand<CN>(this CN cn, string commandText) where CN : IDbConnection => cn.CreateCommand(commandText, CommandType.TableDirect);
 }
