@@ -28,7 +28,6 @@ public class TreeTests {
 		Assert.Equal(2, i);
 	}
 
-
 	[Fact]
 	public void Create_Node() {
 		var node = new Tree<int?>(1);
@@ -66,7 +65,6 @@ public class TreeTests {
 		Assert.Equal(2, tree[0].Count());
 	}
 
-
 	[Fact]
 	public void Set_Parent_To_Self() {
 		var child = new Tree<string>("child");
@@ -75,7 +73,7 @@ public class TreeTests {
 
 	[Fact]
 	public void Level() =>
-	Assert.Equal(2, tree[0][0].Level);
+		Assert.Equal(2, tree[0][0].Level);
 
 	[Fact]
 	public void With_Descendants() =>
