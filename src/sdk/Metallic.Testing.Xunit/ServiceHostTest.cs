@@ -14,6 +14,11 @@ public abstract class ServiceHostTest {
 	protected virtual IHost TestHost => testHost ??= CreateHost();
 	protected virtual IServiceProvider Services => TestHost.Services;
 
+	protected ServiceHostTest(ITestOutputHelper output) {
+		LoggerProvider = new TestOutputLoggerProvider(output);
+		Logger = LoggerProvider.CreateLogger(GetType().FullName!);
+	}
+
 	protected virtual SVC GetKeyedService<SVC>(string key) where SVC : notnull => Services
 		.GetRequiredKeyedService<SVC>(key);
 
@@ -25,11 +30,6 @@ public abstract class ServiceHostTest {
 
 	protected virtual SVC GetOrCreateService<SVC, IMPL>() where SVC : notnull where IMPL : SVC => Services
 		.GetRequiredService<SVC>() ?? Activator.CreateInstance<IMPL>();
-
-	protected ServiceHostTest(ITestOutputHelper output) {
-		LoggerProvider = new TestOutputLoggerProvider(output);
-		Logger = LoggerProvider.CreateLogger(GetType().FullName!);
-	}
 
 	protected virtual IHost CreateHost() => CreateHostBuilder()
 		.ConfigureLogging(lb => this.ConfigureLogging(lb))
