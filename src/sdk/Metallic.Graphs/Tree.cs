@@ -49,8 +49,9 @@ public class Tree<T>(T? value = default) : IEnumerable<Tree<T>> {
 		}
 	}
 
-	public override string ToString() => Value?.ToString() ?? "null";
+	public override string? ToString() => Value?.ToString();// ?? "null";
 
 	public IEnumerator<Tree<T>> GetEnumerator() => children.GetEnumerator();
+
 	IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }
