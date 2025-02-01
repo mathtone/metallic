@@ -25,6 +25,6 @@ public static class IServiceCollectionExtensions {
 		return services;
 	}
 
-	public static IServiceCollection AddSqlDbConnector(this IServiceCollection services) =>
+	public static IServiceCollection AddNpgsqlDbConnector(this IServiceCollection services) =>
 		services.AddSingleton<INpgsqlDbConnector, NpgsqlDbConnector>();
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 
 namespace Metallic.Graphs;
 
@@ -13,13 +7,21 @@ public class Tree<T>(T? value = default) : IEnumerable<Tree<T>> {
 	private Tree<T>? parent;
 
 	public T? Value { get; set; } = value;
+
 	public Tree<T>? Parent {
 		get => parent;
 		set => SetParent(value);
 	}
+
 	public Tree<T> this[int index] => children[index];
 
+	public Tree<T> Root => Parent == null ? this : Parent.Root;
+	public int Level => Parent == null ? 0 : Parent.Level + 1;
+
 	public void SetParent(Tree<T>? newParent) {
+		if (newParent == this)
+			throw new InvalidOperationException("A node cannot be its own parent.");
+
 		if (parent == newParent) return;
 		parent?.children.Remove(this);
 		parent = newParent;
@@ -46,6 +48,8 @@ public class Tree<T>(T? value = default) : IEnumerable<Tree<T>> {
 			}
 		}
 	}
+
+	public override string ToString() => Value?.ToString() ?? "null";
 
 	public IEnumerator<Tree<T>> GetEnumerator() => children.GetEnumerator();
 	IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

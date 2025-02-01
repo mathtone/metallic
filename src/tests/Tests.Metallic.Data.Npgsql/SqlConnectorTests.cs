@@ -1,12 +1,13 @@
-﻿using Metallic.Data.Sql;
-using Microsoft.Data.SqlClient;
+﻿using Metallic.Data.Npgsql;
 using Microsoft.Extensions.DependencyInjection;
-using Xunit.Abstractions;
+using Npgsql;
 using Tests.Metallic.Data.Ado;
+using Xunit.Abstractions;
 
-namespace Tests.Metallic.Data.Sql;
 
-public class SqlConnector(ITestOutputHelper output) : AsyncConnectorTests<ISqlDbConnector, SqlDbConfig>(output) {
+namespace Tests.Metallic.Data.Npgsql;
+
+public class SqlConnector(ITestOutputHelper output) : AsyncConnectorTests<INpgsqlDbConnector, NpgsqlDbConfig>(output) {
 	const string testPwd = "Strong!Passw0rd";
 
 	protected override string ConnectionString { get; } =
@@ -14,15 +15,15 @@ public class SqlConnector(ITestOutputHelper output) : AsyncConnectorTests<ISqlDb
 
 	[Theory]
 	[InlineData("db1"), InlineData("db2")]
-	public async Task GetSqlConnection(string name) {
-		await using var cn = GetKeyedService<SqlConnection>(name);
+	public async Task GetNpgsqlConnection(string name) {
+		await using var cn = GetKeyedService<NpgsqlConnection>(name);
 		Assert.Equal(ConnectionString, cn.ConnectionString);
 	}
 
 	protected override IServiceCollection ConfigureServices(IServiceCollection services) => base
 		.ConfigureServices(services)
-		.AddSqlDb(ConnectionString)
-		.AddSqlDb(DB1, ConnectionString)
-		.AddSqlDb(DB2, ConnectionString)
-		.AddSqlDbConnector();
+		.AddNpgsqlDb(ConnectionString)
+		.AddNpgsqlDb(DB1, ConnectionString)
+		.AddNpgsqlDb(DB2, ConnectionString)
+		.AddNpgsqlDbConnector();
 }
