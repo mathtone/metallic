@@ -16,9 +16,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metallic", "sdk\Metallic\Me
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Metallic", "tests\Tests.Metallic\Tests.Metallic.csproj", "{E6D18CE3-AD94-4CFE-85EB-B66372E4BCA0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sdk", "sdk", "{EABE17C3-7C43-4198-AE75-368459E41B05}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "A. sdk", "A. sdk", "{EABE17C3-7C43-4198-AE75-368459E41B05}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D2D57B99-D038-4C81-93A2-8FE096705CF3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "D. tests", "D. tests", "{D2D57B99-D038-4C81-93A2-8FE096705CF3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metallic.Data", "sdk\Metallic.Data\Metallic.Data.csproj", "{44E7FBD5-2012-4E48-8CC5-FDE708172059}"
 EndProject
@@ -40,7 +40,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Metallic.Data.Npgsql"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Metallic.Data.Sql", "tests\Tests.Metallic.Data.Sql\Tests.Metallic.Data.Sql.csproj", "{0FB032B2-43AD-43D7-89B6-5CA9FF657F85}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sandbox", "sandbox", "{77A70858-54B1-4BCE-91EC-7519C6B522BE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "B. sandbox", "B. sandbox", "{77A70858-54B1-4BCE-91EC-7519C6B522BE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandbox.Tests", "sandbox\Sandbox.Tests\Sandbox.Tests.csproj", "{22983D34-F389-4968-A117-AB8496B5A349}"
 EndProject
@@ -77,6 +77,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metallic.Testing.Xunit", "sdk\Metallic.Testing.Xunit\Metallic.Testing.Xunit.csproj", "{B2D376AA-6822-4897-AED6-D61DE2202EFE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Metallic.Testing.Xunit", "tests\Tests.Metallic.Testing.Xunit\Tests.Metallic.Testing.Xunit.csproj", "{178F5C80-546A-4B70-BB1B-D38056B6B7A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "C. studies", "C. studies", "{7A2133C5-B296-486F-98E0-A41F34E8574F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metallic.Studies.DataAccess", "studies\Metallic.Studies.DataAccess\Metallic.Studies.DataAccess.csproj", "{013C32BE-9445-445E-B3FB-B1B57F9FB14D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -204,6 +208,10 @@ Global
 		{178F5C80-546A-4B70-BB1B-D38056B6B7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{178F5C80-546A-4B70-BB1B-D38056B6B7A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{178F5C80-546A-4B70-BB1B-D38056B6B7A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{013C32BE-9445-445E-B3FB-B1B57F9FB14D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{013C32BE-9445-445E-B3FB-B1B57F9FB14D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{013C32BE-9445-445E-B3FB-B1B57F9FB14D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{013C32BE-9445-445E-B3FB-B1B57F9FB14D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -239,6 +247,7 @@ Global
 		{51C442DB-AC18-44F1-8D7A-B01DE0A155B0} = {D2D57B99-D038-4C81-93A2-8FE096705CF3}
 		{B2D376AA-6822-4897-AED6-D61DE2202EFE} = {EABE17C3-7C43-4198-AE75-368459E41B05}
 		{178F5C80-546A-4B70-BB1B-D38056B6B7A6} = {D2D57B99-D038-4C81-93A2-8FE096705CF3}
+		{013C32BE-9445-445E-B3FB-B1B57F9FB14D} = {7A2133C5-B296-486F-98E0-A41F34E8574F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {963B156C-CA2E-4045-8823-393D107C4020}
