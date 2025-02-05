@@ -24,6 +24,10 @@ public static class SqliteCommandExtensions {
 		return command;
 	}
 
+
+	public static SqliteCommand WithInput<T>(this SqliteCommand command, string name, T value) =>
+		command.WithParameter(name, value, ParameterDirection.Input, default, default);
+
 	public static SqliteCommand WithInput<T>(this SqliteCommand command, string name, T value, DbType type, int size = default) =>
 		command.WithParameter(name, value, ParameterDirection.Input, type, size);
 

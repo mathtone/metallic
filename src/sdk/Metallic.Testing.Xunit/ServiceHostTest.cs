@@ -29,7 +29,7 @@ public abstract class ServiceHostTest {
 		GetOrCreateService<SVC, SVC>();
 
 	protected virtual SVC GetOrCreateService<SVC, IMPL>() where SVC : notnull where IMPL : SVC => Services
-		.GetRequiredService<SVC>() ?? Activator.CreateInstance<IMPL>();
+		.GetService<SVC>() ?? Activator.CreateInstance<IMPL>();
 
 	protected virtual IHost CreateHost() => CreateHostBuilder()
 		.ConfigureLogging(lb => this.ConfigureLogging(lb))

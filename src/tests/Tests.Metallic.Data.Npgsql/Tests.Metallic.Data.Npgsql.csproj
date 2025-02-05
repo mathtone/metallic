@@ -20,6 +20,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\..\sdk\Metallic.Data.Npgsql\Metallic.Data.Npgsql.csproj" />
 	  <ProjectReference Include="..\..\sdk\Metallic.Testing.Xunit\Metallic.Testing.Xunit.csproj" />
+	  <ProjectReference Include="..\Tests.Metallic.Data.Ado\Tests.Metallic.Data.Ado.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
